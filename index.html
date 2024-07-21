@@ -1,22 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <!-- CSS link -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- Font icon link -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  </head>
-  <body>
-    
-    <script src="main.js"></script>
-  </body>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Depense - Courses</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Track Depense</h1>
+        <button class="menu-button"><img src="img/menu-burger.svg" alt=""></button>
+    </header>
+    <nav id="sidebar" class="sidebar">
+        <h1>Track Depense</h1>
+        <button class="close-button">&times;</button>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="mes-courses.html">Mes courses</a></li>
+            <li><a href="#" id="logout">Déconnexion</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="add-course">
+            <div class="add-course-content">
+                <span class="add-icon"><img src="img/ajoutericon.svg" alt=""></span>
+                <p>Ajouter une nouvelle course</p>
+            </div>
+        </div>
+        <section>
+            <h2>Mes courses à venir</h2>
+            <div class="course">
+                <p>Course du: 20 juillet 2024</p>
+                <button class="details-button">Détails</button>
+            </div>
+        </section>
+        <section>
+            <h2>Historique de mes courses</h2>
+            <div class="course">
+                <p>Course du: 20 juillet 2024</p>
+                <button class="details-button">Détails</button>
+            </div>
+            <div class="course">
+                <p>Course du: 20 juillet 2024</p>
+                <button class="details-button">Détails</button>
+            </div>
+            <div class="course">
+                <p>Course du: 20 juillet 2024</p>
+                <button class="details-button">Détails</button>
+            </div>
+            <div class="course">
+                <p>Course du: 20 juillet 2024</p>
+                <button class="details-button">Détails</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Javascript links -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="main.js" type="module"></script>
+</body>
 </html>

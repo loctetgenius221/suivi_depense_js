@@ -1,120 +1,160 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 body {
-  background: linear-gradient(45deg, #f3ec78, #af4261);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-height: 100vh;
-  background: #f1f1f1;
-  padding: 18px;
-}
-.container {
-  width: 100%;
-  height: 100vh;
+  font-family: "Montserrat Alternates", sans-serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 25px;
+  overflow-x: hidden;
 }
-.container h1 {
-  text-align: center;
+
+header {
+  background-color: #22A6B3;
+  color: white;
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.formulaire {
-  position: relative;
-  padding: 25px;
+
+header h1 {
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.menu-button {
   background: none;
-  border: 2px solid black;
-  border-radius: 3px;
-  width: 98%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.1);
-}
-
-.formulaire p {
-  font-size: 13px;
-}
-
-.formulaire p span{
-  font-size: 15px;
+  border: none;
+  color: white;
+  font-size: 1.5em;
   cursor: pointer;
-  font-weight: 500;
+  margin-right: 20px;
 }
 
-.confirmation-contenu {
+main {
+  width: 90%;
+  max-width: 600px;
+  margin-top: 1em;
+}
+
+.add-course {
+  background: white;
+  border: 1px solid #22A6B3;
+  border-radius: 10px;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.add-course-content {
   text-align: center;
 }
 
-.confirmation-contenu h1 {
-  color: #ce0033;
-  font-size: 1.5em;
+.add-icon {
+  font-size: 2em;
+  color: #22A6B3;
 }
 
-.formulaire h2 {
-  font-weight: 500;
-  border-left: 15px solid #000;
-  line-height: 1em;
-  padding-left: 10px;
-  transition: 0.5s;
-  color: #333;
+.add-course p {
+  color: #22A6B3;
+  margin-top: 0.5em;
 }
 
-.formulaire .inputBox {
-  position: relative;
+section {
+  background: white;
+  border-radius: 10px;
+  padding: 1em 0em;
+  margin-bottom: 1em;
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+.course {
+  background: #22A6B3;
+  color: white;
+  border-radius: 10px;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  margin-top: 0.5em;
 }
 
-.formulaire .inputBox label {
-  font-size: 1.1em;
-}
-
-.formulaire .inputBox input {
-  position: relative;
-  width: 100%;
-  padding: 8px 13px;
-  outline: none;
-  border: 1px solid #555;
-  font-size: 1em;
-  
-}
-
-.formulaire .inputBox input#signup-form-btn,
-.formulaire .inputBox input#login-form-btn {
+.details-button {
+  background: white;
+  color: #22A6B3;
   border: none;
-  background: #000000;
-  color: #fff;
-  transition: 0.5s;
-  font-size: 1.1em;
-  font-weight: 500;
+  border-radius: 5px;
+  padding: 0.5em 1em;
   cursor: pointer;
 }
-.error {
-  color: red;
+
+.details-button:hover {
+  background: #00796b;
+  color: white;
 }
-/* Animation styles */
-.fade-in {
-  animation: fadeIn 0.5s forwards;
+
+/* Styles pour le menu burger */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -450px;
+  width: 95%;
+  height: 100%;
+  background-color: #22A6B3;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
 }
-.fade-out {
-  animation: fadeOut 0.5s forwards;
+
+.sidebar h1 {
+  position: absolute;
+  top: 10px;
+  left: 25px;
+  font-size: 20px;
+  color: white;
 }
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
 }
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: underline;
+  color: #ecf0f1;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1c40f;
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar.open {
+  left: 0;
 }
