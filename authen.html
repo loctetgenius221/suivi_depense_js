@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Depense - Inscription</title>
+    <link rel="stylesheet" href="authen.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Track Depense</h1>
+
+        <!-- Formulaire d'inscription -->
+        <form class="formulaire" id="signup-form">
+            <h2 id="titre">S'inscrire</h2>
+
+            <div class="inputBox" id="nomBox">
+              <label for="nomComplet">Nom complet:</label>
+              <input type="text" placeholder="Nom complet" id="nomComplet" required>
+              <span id="errorNom" class="error"></span>
+            </div>
+
+            <div class="inputBox" id="emailBoxSignup">
+              <label for="emailSignup">Email:</label>
+              <input type="email" placeholder="email" id="emailSignup" required>
+              <span id="errorEmailSignup" class="error"></span>
+            </div>
+
+            <div class="inputBox" id="motDePasseBoxSignup">
+              <label for="mot_de_passeSignup">Mot de passe:</label>
+              <input type="password" placeholder="Mot de passe" id="mot_de_passeSignup" required>
+              <span id="errorMotDePasseSignup" class="error"></span>
+            </div>
+
+            <div class="inputBox" id="motDePasseConfirmBoxSignup">
+              <label for="mot_de_passeConfirmSignup">Confirmer votre mot de passe:</label>
+              <input type="password" placeholder="Confirmer votre mot de passe" id="mot_de_passeConfirmSignup" required>
+              <span id="errorMotDePasseConfirmSignup" class="error"></span>
+            </div>
+            
+            <div class="inputBox" id="boutonBoxSignup">
+              <button type="submit" id="signup-form-btn">M'inscrire</button>
+              <p>Vous avez déjà un compte ? <span class="toggle-btn" id="switch-to-login">Se Connecter</span></p>
+            </div>
+            
+        </form>
+
+        <!-- Formulaire de connexion -->
+        <form class="formulaire" id="login-form" style="display: none;">
+          <h2 id="titre">Se connecter</h2>
+
+          <div class="inputBox" id="emailBoxLogin">
+            <label for="emailLogin">Email:</label>
+            <input type="email" placeholder="email" id="emailLogin" required>
+            <span id="errorEmailLogin" class="error"></span>
+          </div>
+
+          <div class="inputBox" id="motDePasseBoxLogin">
+            <label for="mot_de_passeLogin">Mot de passe:</label>
+            <input type="password" placeholder="Mot de passe" id="mot_de_passeLogin" required>
+            <span id="errorMotDePasseLogin" class="error"></span>
+          </div>
+          
+          <div class="inputBox" id="boutonBoxLogin">
+            <button type="submit" id="login-form-btn">Me connecter</button>
+            <p>Vous n'avez pas de compte ? <span class="toggle-btn" id="switch-to-signup">S'inscrire</span></p>
+          </div>
+          
+      </form>
+    </div>
+
+    <!-- Javascript links -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="main.js" type="module"></script>
+</body>
+</html>

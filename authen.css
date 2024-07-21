@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background: white;
+  padding: 2em;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+h1 {
+  font-family: "Montserrat Alternates", sans-serif;
+  color: #22A6B3;
+  margin-bottom: 0.4em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+.formulaire .inputBox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.formulaire .inputBox label {
+  margin-bottom: 0.5em;
+  color: #333;
+  text-align: left;
+  font-weight: 600;
+}
+
+input {
+  margin-bottom: 1em;
+  padding: 0.7em;
+  border: 1px solid #22A6B3;
+  border-radius: 0px;
+  outline: none;
+  font-size: 1em;
+}
+
+button {
+  background-color: #22A6B3;
+  color: white;
+  border: none;
+  padding: 0.8em;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+button:hover {
+  background-color: #22A6B3;
+}
+
+p {
+  margin-top: 1em;
+  color: #333;
+}
+
+p span {
+  color: #22A6B3;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer
+}
+
+p span:hover {
+  text-decoration: underline;
+}
+
+.fade-in {
+ 
+  animation: fadeIn 0.5s;
+  }
+  
+  .fade-out {
+  animation: fadeOut 0.5s;
+  }
+  
+  @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+  }
+  
+  @keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+  }
+  
+  .error {
+  color: red;
+  font-size: 0.9em;
+  }
+
