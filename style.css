@@ -57,6 +57,8 @@ main {
 }
 
 .add-icon {
+  border: none;
+  background: none;
   font-size: 2em;
   color: #22A6B3;
 }
@@ -86,6 +88,10 @@ section h2 {
   align-items: center;
   padding: 1em;
   margin-top: 0.5em;
+}
+
+.course p {
+  font-weight: 600;
 }
 
 .details-button {
@@ -157,4 +163,45 @@ section h2 {
 
 .sidebar.open {
   left: 0;
+}
+
+/* === Style modal === */
+
+/* modal-header background */
+.modal-header  {
+  background-color: none;
+  color: #000;
+}
+
+/* modal-title style */
+.modal-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* modal-body background */
+.modal-body {
+  background-color: #fff;
+}
+
+.modal-body form input {
+  border: 1px solid #22A6B3;
+}
+
+/* form-label style */
+.form-label {
+  color: #000;
+  font-weight: bold;
+}
+
+/* submit button style */
+.btn.btn-primary {
+  background-color: #22A6B3;
+  border-color: #22A6B3;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn.btn-primary:hover {
+  background-color: #00796b;
 }

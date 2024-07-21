@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Track Depense - Courses</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap cdn link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 <body>
     <header>
@@ -24,38 +27,43 @@
     <main>
         <div class="add-course">
             <div class="add-course-content">
-                <span class="add-icon"><img src="img/ajoutericon.svg" alt=""></span>
+                <button class="add-icon" type="button" data-bs-toggle="modal" data-bs-target="#addCourseModal">
+                    <img src="img/ajoutericon.svg" />
+                </button>
                 <p>Ajouter une nouvelle course</p>
             </div>
         </div>
-        <section>
-            <h2>Mes courses à venir</h2>
-            <div class="course">
-                <p>Course du: 20 juillet 2024</p>
-                <button class="details-button">Détails</button>
-            </div>
+        <section id="courses-section">
+            <!-- Les courses seront affichées ici -->
         </section>
-        <section>
-            <h2>Historique de mes courses</h2>
-            <div class="course">
-                <p>Course du: 20 juillet 2024</p>
-                <button class="details-button">Détails</button>
+        <!-- Mon Modal Bootstrap -->
+        <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="addCourseModalLabel">Ajouter une course pour pouvoir ajouter des produits</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="addCourseForm">
+                    <div class="mb-3">
+                      <label for="courseDate" class="form-label">Date de la course</label>
+                      <input type="date" class="form-control" id="courseDate" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Planifier mon achat</button>
+                  </form>
+                </div>
+              </div>
             </div>
-            <div class="course">
-                <p>Course du: 20 juillet 2024</p>
-                <button class="details-button">Détails</button>
-            </div>
-            <div class="course">
-                <p>Course du: 20 juillet 2024</p>
-                <button class="details-button">Détails</button>
-            </div>
-            <div class="course">
-                <p>Course du: 20 juillet 2024</p>
-                <button class="details-button">Détails</button>
-            </div>
-        </section>
+        </div>
     </main>
+    
+      
 
+
+    <!-- Bootstrap link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     <!-- Javascript links -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="main.js" type="module"></script>
