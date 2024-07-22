@@ -205,3 +205,51 @@ section h2 {
 .btn.btn-primary:hover {
   background-color: #00796b;
 }
+
+/* Page detail */
+.btn-ajout-detail {
+  border: 1px solid #22A6B3;
+  padding: 0.7em 1em;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-ajout-detail p {
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.btn-ajout-detail button {
+  display: flex;
+}
+
+/* DETAIL PRODUIT */
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product.bought {
+  border-color: green;
+}
+
+.product.not-bought {
+  border-color: yellow;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.actions button {
+  margin-right: 5px;
+}
