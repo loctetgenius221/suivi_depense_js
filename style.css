@@ -92,6 +92,7 @@ section h2 {
 
 .course p {
   font-weight: 600;
+  margin: 0;
 }
 
 .details-button {
@@ -227,7 +228,7 @@ section h2 {
 
 /* DETAIL PRODUIT */
 .product {
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   padding: 10px;
   margin: 10px 0;
   border-radius: 10px;
@@ -236,11 +237,10 @@ section h2 {
   align-items: center;
 }
 
-.product.bought {
+.product.green-border {
   border-color: green;
 }
-
-.product.not-bought {
+.product.yellow-border {
   border-color: yellow;
 }
 

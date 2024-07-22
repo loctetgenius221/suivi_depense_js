@@ -92,6 +92,26 @@ async function displayProductsForCourse() {
     });
   }
 
+  // Écouteur d"='évenement pour le status acheter/pas acheter
+  function addStatusButtonEventListeners() {
+    const buyButtons = document.querySelectorAll('.acheter');
+    const notBuyButtons = document.querySelectorAll('.pas-acheter');
+
+    buyButtons.forEach(button => {
+        button.addEventListener('click', async function() {
+            const productId = button.getAttribute('data-product-id');
+            await updateProductStatus(productId, true);
+        });
+    });
+
+    notBuyButtons.forEach(button => {
+        button.addEventListener('click', async function() {
+            const productId = button.getAttribute('data-product-id');
+            await updateProductStatus(productId, false);
+        });
+    });
+}
+
 
     const courseId = localStorage.getItem('currentCourseId');
     if (!courseId) {
@@ -115,15 +135,21 @@ async function displayProductsForCourse() {
             products.forEach(product => {
                 const productElement = document.createElement('div');
                 productElement.classList.add('product');
+                if (product.status_achat) {
+                  productElement.classList.add('green-border');
+                } else {
+                    productElement.classList.add('yellow-border');
+                }
                 productElement.innerHTML = `
                     <div>
                       <p>Produit: ${product.nom_produit}</p>
                       <p>Prix: ${product.prix} XOF</p>
                       <p>Quantité: ${product.quantite}</p>
+                      <p>Status: ${product.status_achat ? 'Acheté' : 'Pas acheté'}</p>
                     </div>
                     <div class="actions">
-                      <button class="acheter" data-product-id="${product.id}">Acheter</button>
-                      <button class="pas-acheter" data-product-id="${product.id}">Pas acheter</button>
+                      <button class="acheter" data-product-id="${product.id}" ${product.status_achat ? 'style="display:none;"' : ''}>Acheter</button>
+                      <button class="pas-acheter" data-product-id="${product.id}" ${!product.status_achat ? 'style="display:none;"' : ''}>Pas acheter</button>
                       <div>
                         <button class="modifier" data-product-id="${product.id}"><img src="img/edit.svg" /></button>
                         <button class="supprimer" data-product-id="${product.id}"><img src="img/trash.svg"/></button>                      
@@ -133,6 +159,7 @@ async function displayProductsForCourse() {
                 productsSection.appendChild(productElement);
                 addDeleteButtonEventListeners();
                 addEditButtonEventListeners();
+                addStatusButtonEventListeners();
             });
         }
     } catch (error) {
@@ -182,6 +209,7 @@ async function populateEditForm(productId) {
   }
 }
 
+// Écouteur d'évenement pour la soumission du formulaire de modification
 document.getElementById('editProductForm').addEventListener('submit', async (event) => {
   event.preventDefault();
   const productId = event.target.getAttribute('data-product-id');
@@ -212,6 +240,45 @@ document.getElementById('editProductForm').addEventListener('submit', async (eve
       alert('Une erreur est survenue. Veuillez réessayer.');
   }
 });
+
+function addStatusButtonEventListeners() {
+  const buyButtons = document.querySelectorAll('.acheter');
+  const notBuyButtons = document.querySelectorAll('.pas-acheter');
+
+  buyButtons.forEach(button => {
+      button.addEventListener('click', async function() {
+          const productId = button.getAttribute('data-product-id');
+          await updateProductStatus(productId, true);
+      });
+  });
+
+  notBuyButtons.forEach(button => {
+      button.addEventListener('click', async function() {
+          const productId = button.getAttribute('data-product-id');
+          await updateProductStatus(productId, false);
+      });
+  });
+}
+
+// Fonction pour mettre à jour le status
+async function updateProductStatus(productId, status) {
+  try {
+      const { error } = await supabase
+          .from('produits')
+          .update({ status_achat: status })
+          .eq('id', productId);
+
+      if (error) {
+          throw error;
+      }
+
+      alert('Statut du produit mis à jour avec succès.');
+      await displayProductsForCourse();
+  } catch (error) {
+      console.error('Erreur lors de la mise à jour du statut du produit:', error.message);
+      alert('Une erreur est survenue. Veuillez réessayer.');
+  }
+}
 
 function setupFormHandlers() {
     setupMenuHandlers();
