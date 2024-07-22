@@ -1,4 +1,5 @@
 // @ts-nocheck
+// 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
 const supabaseUrl = 'https://rbqzjfxvniviaupdmrpy.supabase.co';
@@ -11,6 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
     setupFormHandlers();
     displayCourses();
     displayProductsForCourse();
+
+    // Barre de recherche
+    if (window.location.pathname.endsWith('courses.html')) {
+      displayAllCourses();
+      setupSearchBar();
+    }
 });
 
 async function displayCourses() {
@@ -28,7 +35,8 @@ async function displayCourses() {
           .from('courses')
           .select('id, date')
           .eq('user_id', userId)
-          .order('date', { ascending: true });
+          .order('date', { ascending: true })
+          .limit(4);
 
       if (error) throw error;
 
@@ -112,7 +120,7 @@ async function displayProductsForCourse() {
     });
 }
 
-
+    // On recupère le currentCourseId depuis le localstorage
     const courseId = localStorage.getItem('currentCourseId');
     if (!courseId) {
         console.error('Course ID non trouvé dans localStorage.');
@@ -233,7 +241,7 @@ document.getElementById('editProductForm').addEventListener('submit', async (eve
 
       alert('Produit modifié avec succès.');
       const editModal = bootstrap.Modal.getInstance(document.getElementById('editProductModal'));
-      editModal.hide();
+      editModal.reset();
       await displayProductsForCourse();
   } catch (error) {
       console.error('Erreur lors de la modification du produit:', error.message);
@@ -322,6 +330,7 @@ function setupLogoutHandler() {
     }
 }
 
+// Fonction pour l'ajout d'une course
 function setupAddCourseFormHandler() {
     const addCourseForm = document.getElementById('addCourseForm');
     if (addCourseForm) {
@@ -345,6 +354,24 @@ function setupAddCourseFormHandler() {
             const { data: { session } } = await supabase.auth.getSession();
             if (!session) {
                 alert('Vous devez être connecté pour ajouter une course.');
+                return;
+            }
+
+            // Vérifiez si une course avec la même date existe déjà pour l'utilisateur
+            const { data: existingCourse, error: checkError } = await supabase
+                .from('courses')
+                .select('id')
+                .eq('user_id', session.user.id)
+                .eq('date', courseDate.toISOString().split('T')[0]);
+
+            if (checkError) {
+                console.error('Erreur lors de la vérification de l\'existence de la course:', checkError);
+                alert('Une erreur est survenue. Veuillez réessayer.');
+                return;
+            }
+
+            if (existingCourse.length > 0) {
+                alert('Une course avec cette date existe déjà.');
                 return;
             }
 
@@ -373,6 +400,7 @@ function setupAddCourseFormHandler() {
         });
     }
 }
+
 
 
 // Fonction pour enregistrer un produit
@@ -416,6 +444,65 @@ function setupAddProductFormHandler() {
     }
 }
 
+async function displayAllCourses() {
+  try {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+          console.log('Utilisateur non connecté.');
+          return;
+      }
+
+      const userId = session.user.id;
+
+      const { data: courses, error } = await supabase
+          .from('courses')
+          .select('*')
+          .eq('user_id', userId)
+          .order('date', { ascending: true });
+
+      if (error) throw error;
+
+      const coursesList = document.getElementById('courses-list');
+      coursesList.innerHTML = '';
+
+      if (courses.length === 0) {
+          coursesList.innerHTML = '<p>Aucune course trouvée.</p>';
+      } else {
+          courses.forEach(course => {
+              const courseElement = document.createElement('div');
+              courseElement.classList.add('course-item');
+              courseElement.innerHTML = `
+                  <p>Course du: ${new Date(course.date).toLocaleDateString('fr-FR')}</p>
+                  <button class="details-button" data-course-id="${course.id}">Détails</button>
+
+              `;
+              coursesList.appendChild(courseElement);
+          });
+      }
+  } catch (error) {
+      console.error('Erreur lors de la récupération des courses:', error.message);
+  }
+}
+
+// Fonction pour le filtrage et la recherche
+function setupSearchBar() {
+  const searchBar = document.getElementById('search-bar');
+  searchBar.addEventListener('input', function() {
+      const searchTerm = searchBar.value;
+      const courses = document.querySelectorAll('.course-item');
+
+      courses.forEach(course => {
+          const courseDate = new Date(course.textContent.split(': ')[1]).toISOString().split('T')[0];
+          if (courseDate.includes(searchTerm)) {
+              course.style.display = '';
+          } else {
+              course.style.display = 'none';
+          }
+      });
+  });
+}
+
+// Fonction qui gère l'authentification
 function setupAuthHandlers() {
     const signupForm = document.getElementById('signup-form');
     const loginForm = document.getElementById('login-form');
@@ -445,8 +532,8 @@ function setupAuthHandlers() {
 
         signupForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const email = document.getElementById('signup-email').value;
-            const password = document.getElementById('signup-password').value;
+            const email = document.getElementById('emailSignup').value;
+            const password = document.getElementById('signupPassword').value;
 
             const { error } = await supabase.auth.signUp({ email, password });
             if (error) {
@@ -459,8 +546,8 @@ function setupAuthHandlers() {
 
         loginForm.addEventListener('submit', async (event) => {
             event.preventDefault();
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
+            const email = document.getElementById('emailLogin').value;
+            const password = document.getElementById('mot_de_passeLogin').value;
 
             const { error } = await supabase.auth.signInWithPassword({ email, password });
             if (error) {

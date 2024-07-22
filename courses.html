@@ -25,37 +25,13 @@
     </nav>
 
     <main>
-        <div class="add-course">
-            <div class="add-course-content">
-                <button class="add-icon" type="button" data-bs-toggle="modal" data-bs-target="#addCourseModal">
-                    <img src="img/ajoutericon.svg" />
-                </button>
-                <p>Ajouter une nouvelle course</p>
-            </div>
-        </div>
-        <section id="courses-section">
-            <!-- Les courses seront affichées ici -->
-        </section>
-        <!-- Mon Modal Bootstrap -->
-        <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="addCourseModalLabel">Ajouter une course pour pouvoir ajouter des produits</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form id="addCourseForm">
-                    <div class="mb-3">
-                      <label for="courseDate" class="form-label">Date de la course</label>
-                      <input type="date" class="form-control" id="courseDate" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Planifier mon achat</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-        </div>
+      <div class="container">
+        <h2>Liste des Courses</h2>
+        <input type="date" id="search-bar" class="form-control" placeholder="Rechercher une course...">
+        <div id="courses-list" class="mt-4"></div>
+      </div>
+        
+        
     </main>
     
       
