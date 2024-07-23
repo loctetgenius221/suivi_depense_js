@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 body {
   font-family: "Montserrat Alternates", sans-serif;
@@ -11,8 +11,12 @@ body {
   overflow-x: hidden;
 }
 
+.header-desktop {
+  display: none;
+}
+
 header {
-  background-color: #22A6B3;
+  background-color: #22a6b3;
   color: white;
   width: 100%;
   padding: 1em;
@@ -43,13 +47,13 @@ main {
 
 .add-course {
   background: white;
-  border: 2px solid #22A6B3;
+  border: 2px solid #22a6b3;
   border-radius: 10px;
   padding: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.5em;
+  margin: 1.2em 0em;
 }
 
 .add-course-content {
@@ -60,11 +64,11 @@ main {
   border: none;
   background: none;
   font-size: 2em;
-  color: #22A6B3;
+  color: #22a6b3;
 }
 
 .add-course p {
-  color: #22A6B3;
+  color: #22a6b3;
   margin-top: 0.5em;
   font-size: 20px;
 }
@@ -82,7 +86,7 @@ section h2 {
 
 .course,
 .course-item {
-  background: #22A6B3;
+  background: #22a6b3;
   color: white;
   border-radius: 10px;
   display: flex;
@@ -99,7 +103,7 @@ section h2 {
 
 .details-button {
   background: white;
-  color: #22A6B3;
+  color: #22a6b3;
   border: none;
   border-radius: 5px;
   padding: 0.5em 1em;
@@ -118,7 +122,7 @@ section h2 {
   left: -450px;
   width: 95%;
   height: 100%;
-  background-color: #22A6B3;
+  background-color: #22a6b3;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
@@ -168,10 +172,27 @@ section h2 {
   left: 0;
 }
 
+/*  */
+.filter-title {
+  font-size: 18px;
+}
+input#filterDate {
+  width: 80%;
+  border: 2px solid #22a6b3;
+  padding: 5px 10px;
+}
+
+button#filterButton {
+  background: #22a6b3;
+  color: white;
+  border: none;
+  padding: 8px;
+}
+
 /* === Style modal === */
 
 /* modal-header background */
-.modal-header  {
+.modal-header {
   background-color: none;
   color: #000;
 }
@@ -188,7 +209,7 @@ section h2 {
 }
 
 .modal-body form input {
-  border: 1px solid #22A6B3;
+  border: 1px solid #22a6b3;
 }
 
 /* form-label style */
@@ -199,8 +220,8 @@ section h2 {
 
 /* submit button style */
 .btn.btn-primary {
-  background-color: #22A6B3;
-  border-color: #22A6B3;
+  background-color: #22a6b3;
+  border-color: #22a6b3;
   color: #fff;
   font-weight: 600;
 }
@@ -211,7 +232,7 @@ section h2 {
 
 /*=== Page detail ===*/
 .btn-ajout-detail {
-  border: 1px solid #22A6B3;
+  border: 1px solid #22a6b3;
   padding: 0.7em 1em;
   border-radius: 5px;
   display: flex;
@@ -245,8 +266,8 @@ section h2 {
 }
 
 .product .acheter {
-  background: #E8F5EB;
-  color: #1D9E33;
+  background: #e8f5eb;
+  color: #1d9e33;
   border-radius: 20px;
   border: none;
   padding: 5px 20px;
@@ -255,8 +276,8 @@ section h2 {
 }
 
 .product .pas-acheter {
-  background: #F8EEDD;
-  color: #EAA221;
+  background: #f8eedd;
+  color: #eaa221;
   border-radius: 20px;
   border: none;
   padding: 5px 20px;
@@ -265,10 +286,10 @@ section h2 {
 }
 
 .product.green-border {
-  border-color: #1D9E33;
+  border-color: #1d9e33;
 }
 .product.yellow-border {
-  border-color: #EAA221;
+  border-color: #eaa221;
 }
 
 .actions {
@@ -304,4 +325,91 @@ section h2 {
   background: rgb(242, 144, 144);
   padding: 5px;
   border-radius: 5px;
+}
+
+/* === Responsive Desktop === */
+/* @media (max-width: 1023px) {
+  .header-mobile {
+      display: block;
+  }
+  #sidebar-desktop {
+      display: none;
+  }
+  #sidebar-mobile {
+      display: block;
+  }
+} */
+
+
+@media screen and (min-width: 1000px) {
+  /* Styles pour le menu burger */
+  .header-mobile {
+    display: none;
+  }
+  .header-desktop {
+    display: block;
+  }
+  #sidebar-desktop {
+      display: block;
+  }
+  #mobile-sidebar {
+      display: none;
+  }
+  .header-desktop {
+    font-family: "Montserrat Alternates", sans-serif;
+    padding: 1em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  header h1 {
+    text-align: center;
+    font-size: 18px;
+    margin: 0;
+    font-weight: 900;
+  }
+  header .menu-button {
+    display: none;
+  }
+  .deconnexion {
+    display: flex;
+    align-items: center;
+  }
+  .deconnexion a {
+    padding: 8px 8px 8px 8px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ecf0f1;
+    display: block;
+    transition: 0.3s;
+  }
+  .sidebar {
+    position: relative;
+    top: 0;
+    left: 0px;
+    width: 70%;
+    height: auto;
+    background-color: none;
+    padding-top: 0px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .sidebar ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .sidebar ul li.logout-item {
+    margin-left: auto;
+  }
+
+  .sidebar button,
+  .sidebar h1 {
+    display: none;
+  }
 }
