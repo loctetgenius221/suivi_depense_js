@@ -11,6 +11,10 @@ body {
   overflow-x: hidden;
 }
 
+.header-desktop {
+  display: none;
+}
+
 header {
   background-color: #22a6b3;
   color: white;
@@ -168,6 +172,23 @@ section h2 {
   left: 0;
 }
 
+/*  */
+.filter-title {
+  font-size: 18px;
+}
+input#filterDate {
+  width: 80%;
+  border: 2px solid #22a6b3;
+  padding: 5px 10px;
+}
+
+button#filterButton {
+  background: #22a6b3;
+  color: white;
+  border: none;
+  padding: 8px;
+}
+
 /* === Style modal === */
 
 /* modal-header background */
@@ -307,9 +328,34 @@ section h2 {
 }
 
 /* === Responsive Desktop === */
-@media screen and (min-width: 1200px) {
+/* @media (max-width: 1023px) {
+  .header-mobile {
+      display: block;
+  }
+  #sidebar-desktop {
+      display: none;
+  }
+  #sidebar-mobile {
+      display: block;
+  }
+} */
+
+
+@media screen and (min-width: 1000px) {
   /* Styles pour le menu burger */
-  header {
+  .header-mobile {
+    display: none;
+  }
+  .header-desktop {
+    display: block;
+  }
+  #sidebar-desktop {
+      display: block;
+  }
+  #mobile-sidebar {
+      display: none;
+  }
+  .header-desktop {
     font-family: "Montserrat Alternates", sans-serif;
     padding: 1em;
     display: flex;

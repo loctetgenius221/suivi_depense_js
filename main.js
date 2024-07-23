@@ -12,12 +12,50 @@ document.addEventListener("DOMContentLoaded", function () {
   displayCourses();
   displayProductsForCourse();
 
-  // Barre de recherche
-  if (window.location.pathname.endsWith("courses.html")) {
-    displayAllCourses();
-    setupSearchBar();
-  }
+  
 });
+
+//!? Écouteur d'évenement pour capturer la date sélectionner et filtrer la course en conséquence
+document.getElementById('filterButton').addEventListener('click', async () => {
+    const filterDate = document.getElementById('filterDate').value;
+    if (!filterDate) {
+        alert('Veuillez sélectionner une date pour filtrer.');
+        return;
+    }
+
+    try {
+        const { data: courses, error } = await supabase
+            .from('courses')
+            .select('*')
+            .eq('date', filterDate);
+        
+        if (error) {
+            throw error;
+        }
+
+        // Fonction pour afficher les courses filtrées
+        displayFilteredCourses(courses);
+    } catch (error) {
+        console.error('Erreur lors du filtrage des courses:', error.message);
+    }
+});
+
+//!? Fonction pour affiché les courses filtrées
+function displayFilteredCourses(courses) {
+    const coursesSection = document.getElementById('coursesSection');
+    const courseList = document.getElementById('courses-list');
+    courseList.innerHTML = ''; // Vider la liste actuelle
+
+    courses.forEach(course => {
+        const courseElement = document.createElement("div");
+        courseElement.classList.add("course");
+        courseElement.innerHTML = `
+            <p>Course du: ${new Date(course.date).toLocaleDateString("fr-FR")}</p>
+            <button class="details-button" data-course-id="${course.id}">Détails</button>
+        `;
+        coursesSection.appendChild(courseElement);
+    });
+}
 
 async function displayCourses() {
   try {
@@ -351,22 +389,45 @@ function setupFormHandlers() {
 
 // Fonction qui gère le menu burger
 function setupMenuHandlers() {
-  const menuButton = document.querySelector(".menu-button img");
-  const closeButton = document.querySelector(".close-button");
-  const sidebar = document.getElementById("sidebar");
+  // Desktop elements
+  const desktopMenuButton = document.getElementById("desktop-menu-button");
+  const desktopCloseButton = document.getElementById("desktop-close-button");
+  const desktopSidebar = document.getElementById("desktop-sidebar");
 
-  if (menuButton && closeButton && sidebar) {
-    menuButton.addEventListener("click", function () {
-      sidebar.classList.add("open");
-      menuButton.style.display = "none";
+  // Mobile elements
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileCloseButton = document.getElementById("mobile-close-button");
+  const mobileSidebar = document.getElementById("mobile-sidebar");
+
+  if (desktopMenuButton && desktopCloseButton && desktopSidebar) {
+    desktopMenuButton.addEventListener("click", function () {
+      desktopSidebar.classList.add("open");
+      desktopMenuButton.style.display = "none";
     });
 
-    closeButton.addEventListener("click", function () {
-      sidebar.classList.remove("open");
-      menuButton.style.display = "block";
+    desktopCloseButton.addEventListener("click", function () {
+      desktopSidebar.classList.remove("open");
+      desktopMenuButton.style.display = "block";
+    });
+  }
+
+  if (mobileMenuButton && mobileCloseButton && mobileSidebar) {
+    mobileMenuButton.addEventListener("click", function () {
+      mobileSidebar.classList.add("open");
+      mobileMenuButton.style.display = "none";
+    });
+
+    mobileCloseButton.addEventListener("click", function () {
+      mobileSidebar.classList.remove("open");
+      mobileMenuButton.style.display = "block";
     });
   }
 }
+
+// Call the function after the DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+  setupMenuHandlers
+});
 
 // Fonction qui gère la deconnexion du user
 function setupLogoutHandler() {
