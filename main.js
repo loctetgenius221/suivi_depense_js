@@ -431,9 +431,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Fonction qui gère la deconnexion du user
 function setupLogoutHandler() {
-  const logoutButton = document.getElementById("logout");
-  if (logoutButton) {
-    logoutButton.addEventListener("click", async function () {
+  const logoutButtons = document.querySelectorAll(".logout");
+  logoutButtons.forEach(button => {
+    button.addEventListener("click", async function (event) {
+      event.preventDefault();
       const { error } = await supabase.auth.signOut();
       if (error) {
         console.log("Error during logout:", error.message);
@@ -441,7 +442,7 @@ function setupLogoutHandler() {
         window.location.href = "authen.html";
       }
     });
-  }
+  });
 }
 
 // Fonction pour l'ajout d'une course
