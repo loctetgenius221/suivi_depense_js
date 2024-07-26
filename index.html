@@ -14,24 +14,40 @@
     />
   </head>
   <body>
-    <header>
+    <header class="header-desktop">
       <h1>Track Depense</h1>
-      <button class="menu-button">
+      <button id="desktop-menu-button" class="menu-button">
         <img src="img/menu-burger.svg" alt="" />
       </button>
-      <nav id="sidebar" class="sidebar">
+      <nav id="desktop-sidebar" class="sidebar">
         <h1>Track Depense</h1>
-        <button class="close-button">&times;</button>
+        <button id="desktop-close-button" class="close-button">&times;</button>
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li><a href="courses.html">Mes courses</a></li>
         </ul>
       </nav>
       <div class="deconnexion">
-        <img src="img/logout.svg" alt="icone deconnexion">
+        <img src="img/logout.svg" alt="icone deconnexion" />
         <a href="#" id="logout">Déconnexion</a>
       </div>
     </header>
+
+    <header class="header-mobile">
+      <h1>Track Depense</h1>
+      <button id="mobile-menu-button" class="menu-button">
+        <img src="img/menu-burger.svg" alt="" />
+      </button>
+    </header>
+    <nav id="mobile-sidebar" class="sidebar">
+      <h1>Track Depense</h1>
+      <button id="mobile-close-button" class="close-button">&times;</button>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="courses.html">Mes courses</a></li>
+        <li><a href="#" id="logout">Déconnexion</a></li>
+      </ul>
+    </nav>
 
     <main>
       <div class="add-course">
@@ -95,7 +111,7 @@
     </main>
 
     <!-- Sweetalert2 cdn -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Bootstrap link -->
     <script
